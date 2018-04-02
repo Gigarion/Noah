@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
+using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -41,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private List<Collider> triggerList = new List<Collider>();
+        private GameObject currentRay;
 
         // Use this for initialization
         private void Start()
@@ -81,6 +84,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            ShootRay();
+            CheckTriggers();
         }
 
 
@@ -254,6 +259,53 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        private void CheckTriggers()
+        {
+            foreach (Collider c in triggerList)
+            {
+                string tag = c.gameObject.tag;
+                switch(tag)
+                {
+                    case "Convo1": Debug.Log("Convo 1"); break;
+                    default:break;
+                }
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!triggerList.Contains(other))
+            {
+                triggerList.Add(other);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            triggerList.Remove(other);
+        }
+
+        private void ShootRay()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Debug.Log("zap");
+            if (Physics.Raycast(ray, out hit, 1000, 1 << 8))
+            {
+                Debug.Log("rayshoot, hit" + hit.collider.gameObject.tag);
+                GameObject go = hit.collider.gameObject;
+                currentRay = go;
+                if (go.CompareTag("carsphere"))
+                {
+                    go.GetComponent<RenderTimer>().SetVisible();
+                }
+            } else
+            {
+                currentRay = null;
+            }
+            Debug.Log(" Hiii " + currentRay);
         }
     }
 }
