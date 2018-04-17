@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: 6142b4b3e4b4c454ea7d4eaf32f5ae64
+timeCreated: 1513494354
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: alianAlien_toothdownA
+    100002: //RootNode
+    100004: alien_skull
+    100006: Alien_toothdownB
+    100008: Alien_toothupA
+    100010: Alien_toothupB
+    100012: alienjaw
+    100014: spine
+    100016: AlienSkullDown
+    100018: AlienSkullSpine
+    100020: AlienSkullTop
+    400000: alianAlien_toothdownA
+    400002: //RootNode
+    400004: alien_skull
+    400006: Alien_toothdownB
+    400008: Alien_toothupA
+    400010: Alien_toothupB
+    400012: alienjaw
+    400014: spine
+    400016: AlienSkullDown
+    400018: AlienSkullSpine
+    400020: AlienSkullTop
+    2300000: alianAlien_toothdownA
+    2300002: alien_skull
+    2300004: Alien_toothdownB
+    2300006: Alien_toothupA
+    2300008: Alien_toothupB
+    2300010: alienjaw
+    2300012: spine
+    2300014: AlienSkullDown
+    2300016: AlienSkullSpine
+    2300018: AlienSkullTop
+    3300000: alianAlien_toothdownA
+    3300002: alien_skull
+    3300004: Alien_toothdownB
+    3300006: Alien_toothupA
+    3300008: Alien_toothupB
+    3300010: alienjaw
+    3300012: spine
+    3300014: AlienSkullDown
+    3300016: AlienSkullSpine
+    3300018: AlienSkullTop
+    4300000: spine
+    4300002: alianAlien_toothdownA
+    4300004: Alien_toothdownB
+    4300006: Alien_toothupA
+    4300008: Alien_toothupB
+    4300010: alienjaw
+    4300012: alien_skull
+    4300014: AlienSkullSpine
+    4300016: AlienSkullDown
+    4300018: AlienSkullTop
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
