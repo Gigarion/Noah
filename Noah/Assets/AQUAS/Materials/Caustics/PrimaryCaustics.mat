@@ -11,6 +11,7 @@ Material:
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -18,14 +19,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: 60e01f8b2ab77b44eb22e282273b3e7f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6effec9b2973c994ebd89ceaf9909b14, type: 3}
         m_Scale: {x: 600, y: 600}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DepthFade: 24.8
+    - _DepthFade: 14
     - _DistanceVisibility: 10
     - _Fade: 1
     - _Intensity: 0.6
-    - _WaterLevel: 34.8
+    - _WaterLevel: 24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

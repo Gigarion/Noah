@@ -519,7 +519,7 @@ MonoBehaviour:
   prefabVersion: 2.0.3
   Player: {fileID: 0}
   PlayerCamera: {fileID: 0}
-  AssignInRuntime: 0
+  AssignInRuntime: 1
   PlayerTag: Player
   CameraTag: MainCamera
   dontDestroy: 0
