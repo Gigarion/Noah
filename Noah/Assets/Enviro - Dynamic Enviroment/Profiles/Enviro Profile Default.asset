@@ -893,12 +893,12 @@ MonoBehaviour:
   qualitySettings:
     GlobalParticleEmissionRates: 1
     UpdateInterval: 0.5
-  viewMode: 0
+  viewMode: 2
   showPlayerSetup: 1
   showRenderingSetup: 0
   showComponentsSetup: 0
   showTimeUI: 1
   showWeatherUI: 1
-  showAudioUI: 0
+  showAudioUI: 1
   showEffectsUI: 1
   modified: 1
