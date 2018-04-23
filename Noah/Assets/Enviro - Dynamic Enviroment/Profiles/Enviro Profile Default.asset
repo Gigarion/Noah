@@ -245,8 +245,9 @@ MonoBehaviour:
     noiseScale: 0.01
     noiseVelocity: {x: 3, y: 1.5}
   skySettings:
-    skyboxMode: 0
-    customSkyboxMaterial: {fileID: 0}
+    skyboxMode: 1
+    customSkyboxMaterial: {fileID: 2100000, guid: e222162ddb8d34547a133b673221b195,
+      type: 2}
     customSkyboxColor: {r: 0, g: 0, b: 0, a: 0}
     blackGroundMode: 1
     waveLength: {x: 540, y: 496, z: 437}
@@ -893,7 +894,7 @@ MonoBehaviour:
   qualitySettings:
     GlobalParticleEmissionRates: 1
     UpdateInterval: 0.5
-  viewMode: 1
+  viewMode: 3
   showPlayerSetup: 1
   showRenderingSetup: 0
   showComponentsSetup: 0
