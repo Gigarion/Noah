@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.68.0 r58536</authoring_tool>
+    </contributor>
+    <created>2014-06-12T16:25:37</created>
+    <modified>2014-06-12T16:25:37</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="swamp_tall_grass_diff_tga" name="swamp_tall_grass_diff_tga">
+      <init_from>swamp_tall_grass_diff.tga</init_from>
+    </image>
+    <image id="swamp_tall_grass_nrm_png" name="swamp_tall_grass_nrm_png">
+      <init_from>swamp_tall_grass_nrm.png</init_from>
+    </image>
+    <image id="swamp_tall_grass_spec_alpha_tga" name="swamp_tall_grass_spec_alpha_tga">
+      <init_from>swamp_tall_grass_spec_alpha.tga</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="swamp_tall_grass_mat-effect">
+      <profile_COMMON>
+        <newparam sid="swamp_tall_grass_spec_alpha_tga-surface">
+          <surface type="2D">
+            <init_from>swamp_tall_grass_spec_alpha_tga</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="swamp_tall_grass_spec_alpha_tga-sampler">
+          <sampler2D>
+            <source>swamp_tall_grass_spec_alpha_tga-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="swamp_tall_grass_nrm_png-surface">
+          <surface type="2D">
+            <init_from>swamp_tall_grass_nrm_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="swamp_tall_grass_nrm_png-sampler">
+          <sampler2D>
+            <source>swamp_tall_grass_nrm_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="swamp_tall_grass_spec_alpha_tga-sampler"/>
+            </diffuse>
+            <specular>
+              <texture texture="swamp_tall_grass_spec_alpha_tga-sampler"/>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <transparent>
+              <texture texture="swamp_tall_grass_spec_alpha_tga-sampler"/>
+            </transparent>
+            <transparency>
+              <float sid="transparency">0</float>
+            </transparency>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <bump>
+                <texture texture="swamp_tall_grass_nrm_png-sampler"/>
+              </bump>
+            </technique>
+          </extra>
+        </technique>
+        <extra>
+          <technique profile="GOOGLEEARTH">
+            <double_sided>1</double_sided>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra><technique profile="MAX3D"><double_sided>1</double_sided></technique></extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="swamp_tall_grass_mat-material" name="swamp_tall_grass_mat">
+      <instance_effect url="#swamp_tall_grass_mat-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="swamptallgrassa256-mesh" name="swamptallgrassa256">
+      <mesh>
+        <source id="swamptallgrassa256-mesh-positions">
+          <float_array id="swamptallgrassa256-mesh-positions-array" count="48">1.554235 0 -0.04285478 -1.554235 0 -0.04285478 1.554235 0.4366984 3.476361 -1.554235 0.4366984 4.163918 0 -1.554235 -0.04285478 -2.38419e-7 1.554235 -0.04285478 0.33222 -1.554235 4.349721 0.3322198 1.554235 4.349721 -1.09901 1.09901 -0.04285478 1.09901 -1.09901 -0.04285478 -1.316589 0.8418707 3.768573 0.8814306 -1.356149 3.768573 -1.09901 -1.09901 -0.04285478 1.09901 1.09901 -0.04285478 -0.8913205 -1.306699 3.768573 1.306699 0.8913205 4.456799</float_array>
+          <technique_common>
+            <accessor source="#swamptallgrassa256-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="swamptallgrassa256-mesh-normals">
+          <float_array id="swamptallgrassa256-mesh-normals-array" count="24">0 -0.9946551 0.1032536 -0.9971522 0 0.07541674 0.7043802 0.7043803 0.08773154 -0.7056052 0.705605 0.06513684 0.02722811 -0.9920207 0.1230995 -0.9971522 0 0.07541674 0.7043802 0.7043803 0.08773148 -0.7169417 0.6928873 0.07682329</float_array>
+          <technique_common>
+            <accessor source="#swamptallgrassa256-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="swamptallgrassa256-mesh-map-0">
+          <float_array id="swamptallgrassa256-mesh-map-0-array" count="48">0.01525169 9.998e-5 0.984117 9.998e-5 0.01525163 0.9968632 0.01525169 9.998e-5 0.984117 9.998e-5 0.01525163 0.9968632 0.01525169 9.998e-5 0.984117 9.998e-5 0.01525163 0.9968632 0.01525169 9.998e-5 0.984117 9.998e-5 0.01525163 0.9968632 0.984117 9.998e-5 0.984117 0.9968632 0.01525163 0.9968632 0.984117 9.998e-5 0.984117 0.9968632 0.01525163 0.9968632 0.984117 9.998e-5 0.984117 0.9968632 0.01525163 0.9968632 0.984117 9.998e-5 0.984117 0.9968632 0.01525163 0.9968632</float_array>
+          <technique_common>
+            <accessor source="#swamptallgrassa256-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="swamptallgrassa256-mesh-colors">
+          <float_array id="swamptallgrassa256-mesh-colors-array" count="72">0 0 0 0 0 0 0.3019608 0.003921568 0.6 0 0 0 0 0 0 0.3019608 0.003921568 0.6 0 0 0 0 0 0 0.3019608 0.003921568 0.6 0 0 0 0 0 0 0.3019608 0.003921568 0.6 0 0 0 0.2980392 0 0.5921569 0.3019608 0.003921568 0.6 0 0 0 0.2980392 0 0.5921569 0.3019608 0.003921568 0.6 0 0 0 0.2980392 0 0.5921569 0.3019608 0.003921568 0.6 0 0 0 0.2980392 0 0.5921569 0.3019608 0.003921568 0.6</float_array>
+          <technique_common>
+            <accessor source="#swamptallgrassa256-mesh-colors-array" count="24" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="swamptallgrassa256-mesh-vertices">
+          <input semantic="POSITION" source="#swamptallgrassa256-mesh-positions"/>
+        </vertices>
+        <polylist material="swamp_tall_grass_mat-material" count="8">
+          <input semantic="VERTEX" source="#swamptallgrassa256-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#swamptallgrassa256-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#swamptallgrassa256-mesh-map-0" offset="2" set="0"/>
+          <input semantic="COLOR" source="#swamptallgrassa256-mesh-colors" offset="3"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>1 0 0 0 0 0 1 1 3 0 2 2 5 1 3 3 4 1 4 4 7 1 5 5 9 2 6 6 8 2 7 7 11 2 8 8 13 3 9 9 12 3 10 10 15 3 11 11 0 4 12 12 2 4 13 13 3 4 14 14 4 5 15 15 6 5 16 16 7 5 17 17 8 6 18 18 10 6 19 19 11 6 20 20 12 7 21 21 14 7 22 22 15 7 23 23</p>
+        </polylist>
+      </mesh>
+      <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="base" name="base" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="start" name="start" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="swamptallgrassa256" name="swamptallgrassa256" type="NODE">
+            <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <instance_geometry url="#swamptallgrassa256-mesh">
+              <bind_material>
+                <technique_common>
+                  <instance_material symbol="swamp_tall_grass_mat-material" target="#swamp_tall_grass_mat-material"/>
+                </technique_common>
+              </bind_material>
+            </instance_geometry>
+          </node>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
