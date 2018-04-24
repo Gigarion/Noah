@@ -13,6 +13,8 @@ public class CollectableScript : MonoBehaviour {
     {
         Debug.Log(actor);
         hud.Flash(newSpecies);
+        Destroy(gameObject.GetComponent<Usable>());
+        Debug.Log(gameObject);
         if (deleteOnUse)
         {
             gameObject.SetActive(false);
