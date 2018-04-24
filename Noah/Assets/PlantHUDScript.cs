@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PlantHUDScript : MonoBehaviour
 {
-
     private bool on = true;
     public double upTime = 0.5;
     public double downTime = 0.5;
@@ -55,12 +54,12 @@ public class PlantHUDScript : MonoBehaviour
             dupeSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
             dupeSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(0.0f);
             cooldown -= Time.deltaTime;
-            if (cooldown < 0)
+            /*if (cooldown < 0)
             {
                 newspecies = !newspecies;
                 Flash(newspecies);
                 cooldown = 1.0;
-            }
+            }*/
         }
     }
 
