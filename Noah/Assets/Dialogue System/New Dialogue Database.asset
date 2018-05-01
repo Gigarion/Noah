@@ -885,7 +885,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: I'm hoping to find it by the end of today, supplies are running low
+        value: I'm hoping to find it by the end of today; supplies are running low,
           and I don't want to get stuck out here.
         type: 0
         typeString: 
@@ -1001,8 +1001,8 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 381.76468
-        y: 104.70592
+        x: 347.72214
+        y: 77.04634
         width: 160
         height: 30
     - id: 5
@@ -1072,8 +1072,8 @@ MonoBehaviour:
         y: 212.17656
         width: 160
         height: 30
-    canvasScrollPosition: {x: 16.470581, y: 2.3529358}
-    canvasZoom: 0.8500001
+    canvasScrollPosition: {x: 50, y: 29.016968}
+    canvasZoom: 0.94
   - id: 4
     fields:
     - title: Title
