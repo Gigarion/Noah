@@ -8,10 +8,11 @@ namespace AQUAS
 {
 	[InitializeOnLoad]
 	public class AQUAS_AddDefine : Editor {
-
+        
 		static AQUAS_AddDefine()
 		{
-			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+
+            var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
 
 			if (!symbols.Contains("AQUAS_PRESENT"))
 			{
@@ -34,6 +35,25 @@ namespace AQUAS
             if (!symbols.Contains("UNITY_POST_PROCESSING_STACK_V2") && Directory.Exists(Application.dataPath + "/PostProcessing-2"))
             {
                 symbols += ";" + "UNITY_POST_PROCESSING_STACK_V2";
+                PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
+            }
+
+            // the following only removes the scripting define symbol if the pp stack v2 is not in the project!
+            if (symbols.Contains("UNITY_POST_PROCESSING_STACK_V2") && !Directory.Exists(Application.dataPath + "/PostProcessing-2"))
+            {
+                symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+
+                symbols = symbols.Replace("UNITY_POST_PROCESSING_STACK_V2;", "");
+                symbols = symbols.Replace("UNITY_POST_PROCESSING_STACK_V2", "");
+                PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
+            }
+
+            if (symbols.Contains("UNITY_POST_PROCESSING_STACK_V2") && !File.Exists(Application.dataPath + "/PostProcessing/Runtime/PostProcessLayer.cs"))
+            {
+                symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+
+                symbols = symbols.Replace("UNITY_POST_PROCESSING_STACK_V2;", "");
+                symbols = symbols.Replace("UNITY_POST_PROCESSING_STACK_V2", "");
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
             }
         }

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Reflection;
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
 using UnityEngine.PostProcessing;
 #endif
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
 using UnityEngine.Rendering.PostProcessing;
 #endif
 #if UNITY_EDITOR
@@ -85,11 +85,11 @@ public class AQUAS_LensEffects : MonoBehaviour {
     SunShafts sunShafts;
 #endif
 
-#if UNITY_5_6_OR_NEWER && UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_5_6_OR_NEWER && UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
     PostProcessingBehaviour postProcessing;
 #endif
 
-#if UNITY_5_6_OR_NEWER && UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_5_6_OR_NEWER && UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
     PostProcessLayer postProcessing;
     PostProcessVolume postProcessingVolume;
 #endif
@@ -113,8 +113,20 @@ public class AQUAS_LensEffects : MonoBehaviour {
     //</summary>
     void Start () {
 
+#if UNITY_2018 && UNITY_EDITOR
+
+        if (gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").gameObject.activeSelf || gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").gameObject.activeSelf)
+        {
+            if (EditorUtility.DisplayDialog("Caustics Warning", "You are using Unity 2018. AQUAS is currently experiencing some issues with caustic effects in Unity 2018. It is recommended to keep the caustic projectors disabled until a bugfix is ready. Do you want to disable the caustic projectors?", "Disable Caustics", "Keep Caustics Enabled"))
+            {
+                gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").gameObject.SetActive(false);
+                gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").gameObject.SetActive(false);
+            }
+        }
+#endif
+
         //Set up the post processing on the camera
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
         if (gameObjects.mainCamera.GetComponent<PostProcessingBehaviour>() == null)
         {
             gameObjects.mainCamera.AddComponent<PostProcessingBehaviour>();
@@ -123,7 +135,7 @@ public class AQUAS_LensEffects : MonoBehaviour {
         postProcessing = gameObjects.mainCamera.GetComponent<PostProcessingBehaviour>();
 #endif
 
-#if UNITY_POST_PROCESSING_STACK_V2 && UNITY_EDITOR
+#if UNITY_POST_PROCESSING_STACK_V2 && UNITY_EDITOR && AQUAS_PRESENT
         if (gameObjects.mainCamera.GetComponent<PostProcessLayer>() == null)
         {
             EditorUtility.DisplayDialog("No Post Process Layer detected", "The camera object is missing a Post Process Layer and a Post Process Volume. In the Editor AQUAS will try to add them when entering play mode. However it is recommended that you add them manually before entering playmode, or else they will be missing in the build.", "Got It!");
@@ -168,9 +180,9 @@ public class AQUAS_LensEffects : MonoBehaviour {
 #endif
 
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && AQUAS_PRESENT
 #if UNITY_POST_PROCESSING_STACK_V1 || UNITY_POST_PROCESSING_STACK_V2
-        if(underWaterParameters.defaultProfile == null)
+        if (underWaterParameters.defaultProfile == null)
         {
             EditorUtility.DisplayDialog("WARNING! - Post default post processing profile missing!", "The post processing profiles in the inspector of the underwater camera effects are missing a default profile! It's not recommended to leave the default profile empty. If you don't want to use post processing while afloat, you can use a profile with all image effects disabled", "Got it!");
         }
@@ -218,11 +230,11 @@ public class AQUAS_LensEffects : MonoBehaviour {
             defaultRefraction = waterPlaneMaterial.GetFloat("_Refraction");
         }
 
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
         postProcessing.profile = underWaterParameters.defaultProfile;
 #endif
 
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
         postProcessingVolume.profile = underWaterParameters.defaultProfile;
 #endif
 
@@ -323,23 +335,23 @@ public class AQUAS_LensEffects : MonoBehaviour {
 
             //Enables Camera Effects and sets bloom value for underwater mode
             #region Enable Image Effects
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
             if(postProcessing.profile != underWaterParameters.underwaterProfile)
             {
                 postProcessing.profile = underWaterParameters.underwaterProfile;
             }
 #endif
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
             if (postProcessingVolume.profile != underWaterParameters.underwaterProfile)
             {
                 postProcessingVolume.profile = underWaterParameters.underwaterProfile;
                 postProcessingVolume.sharedProfile = underWaterParameters.underwaterProfile;
             }
 #endif
-#endregion
+            #endregion
 
             //Enables underwater fog and sets fog parameters for underwater mode
-#region Enable Underwater Fog    
+            #region Enable Underwater Fog    
 
             if (tenkokuObj!=null)
             {
@@ -454,24 +466,24 @@ public class AQUAS_LensEffects : MonoBehaviour {
 
             //Disables Camera Effects for and sets bloom value for afloat mode
             #region Disable Image Effects
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
             if(postProcessing.profile != underWaterParameters.defaultProfile)
             {
                 postProcessing.profile = underWaterParameters.defaultProfile;
             }
 #endif
 
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
             if (postProcessingVolume.profile != underWaterParameters.defaultProfile)
             {
                 postProcessingVolume.profile = underWaterParameters.defaultProfile;
                 postProcessingVolume.sharedProfile = underWaterParameters.defaultProfile;
             }
 #endif
-#endregion
+            #endregion
 
             //Disables underwater fog and sets fog parameters back to default
-#region Disable Underwater Fog
+            #region Disable Underwater Fog
 
             if (tenkokuObj != null)
             {

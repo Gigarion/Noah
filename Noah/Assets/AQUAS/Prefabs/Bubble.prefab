@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc7cc510c20b0b41bb8f7c01e267906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averageUpdrift: 5.1573334
+  averageUpdrift: 2.2840006
   waterLevel: 34.8
   mainCamera: {fileID: 0}
   smallBubble: {fileID: 197302, guid: fadc172ca7d6ce64ebebc92b2272f685, type: 2}

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
 using UnityEngine.PostProcessing;
 #endif
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
 using UnityEngine.Rendering.PostProcessing;
 #endif
 
@@ -323,7 +323,7 @@ public class AQUAS_RiverSetup : EditorWindow {
             GameObject underwaterObj = Instantiate(underwaterPrefab);
             underwaterObj.name = "UnderWaterCameraEffects";
 
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
             underwaterObj.GetComponent<AQUAS_LensEffects>().underWaterParameters.underwaterProfile = (PostProcessProfile)AssetDatabase.LoadAssetAtPath("Assets/AQUAS/Post Processing/AQUAS_Underwater_v2.asset", typeof(PostProcessProfile));
             underwaterObj.GetComponent<AQUAS_LensEffects>().underWaterParameters.defaultProfile = (PostProcessProfile)AssetDatabase.LoadAssetAtPath("Assets/AQUAS/Post Processing/DefaultPostProcessing_v2.asset", typeof(PostProcessProfile));
 #endif
@@ -339,13 +339,13 @@ public class AQUAS_RiverSetup : EditorWindow {
             underwaterObj.GetComponent<AQUAS_LensEffects>().gameObjects.useSquaredPlanes = true;
 
             //Add and configure image effects neccessary for AQUAS
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
             if (camera.gameObject.GetComponent<PostProcessingBehaviour>() == null)
             {
                 camera.gameObject.AddComponent<PostProcessingBehaviour>();
             }
 #endif
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
             if (camera.gameObject.GetComponent<PostProcessLayer>() == null)
             {
                 camera.gameObject.AddComponent<PostProcessLayer>();
@@ -433,10 +433,10 @@ public class AQUAS_RiverSetup : EditorWindow {
     //</summary>
     void HookupCamera()
     {
-#if UNITY_POST_PROCESSING_STACK_V1
+#if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
         camera.gameObject.AddComponent<PostProcessingBehaviour>();
 #endif
-#if UNITY_POST_PROCESSING_STACK_V2
+#if UNITY_POST_PROCESSING_STACK_V2 && AQUAS_PRESENT
         if (camera.gameObject.GetComponent<PostProcessLayer>() == null)
         {
             camera.gameObject.AddComponent<PostProcessLayer>();
