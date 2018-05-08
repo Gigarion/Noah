@@ -326,10 +326,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                // Debug.Log("rayshoot, hit" + hit.collider.gameObject.tag);
                 GameObject go = hit.collider.gameObject;
                 currentRay = go;
-                if (go.CompareTag("carsphere"))
-                {
-                    go.GetComponent<RenderTimer>().SetVisible();
-                }
             } else
             {
                 currentRay = null;

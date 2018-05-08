@@ -11,24 +11,19 @@ public class PlantHUDScript : MonoBehaviour
     public double downTime = 0.5;
     private double timeup = 0;
     private double timedown = 0;
+    public int count;
     double cooldown = 1.0;
-    private GameObject slider;
-    private GameObject sliderFill;
-    private GameObject sliderBackground;
     private GameObject image;
     private GameObject newSpeciesText;
-    private GameObject dupeSpeciesText;
+    private Text countText;
     private bool newspecies = false;
 
 
     void Start()
     {
-        slider = gameObject.transform.Find("Slider").gameObject;
-        sliderBackground = slider.transform.Find("Background").gameObject;
-        sliderFill = slider.transform.Find("Fill Area").gameObject.transform.Find("Fill").gameObject;
         image = gameObject.transform.Find("Image").gameObject;
         newSpeciesText = gameObject.transform.Find("NewSpeciesText").gameObject;
-        dupeSpeciesText = gameObject.transform.Find("DuplicateSpeciesText").gameObject;
+        countText = gameObject.transform.Find("CountText").gameObject.transform.Find("Count").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -47,19 +42,10 @@ public class PlantHUDScript : MonoBehaviour
             alpha += (float)(timedown / downTime / 2);
             Debug.Log("Down");
             setAlpha(alpha);
-        } else
-        {
+        } else {
             newSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
             newSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-            dupeSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-            dupeSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(0.0f);
             cooldown -= Time.deltaTime;
-            /*if (cooldown < 0)
-            {
-                newspecies = !newspecies;
-                Flash(newspecies);
-                cooldown = 1.0;
-            }*/
         }
     }
 
@@ -72,27 +58,14 @@ public class PlantHUDScript : MonoBehaviour
     public void OnUse()
     {
         Flash(true);
-        slider.GetComponent<Slider>().value += 0.2f;
     }
 
     private void setAlpha(float alpha)
     {
         gameObject.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-        sliderBackground.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-        sliderFill.GetComponent<CanvasRenderer>().SetAlpha(alpha);
         image.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-        if (newspecies)
-        {
-            newSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-            newSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(alpha);
-            dupeSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-            dupeSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-        } else {
-            newSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-            newSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(0.0f);
-            dupeSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-            dupeSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(alpha);
-        }
+        newSpeciesText.GetComponent<CanvasRenderer>().SetAlpha(alpha);
+        newSpeciesText.transform.Find("Text").GetComponent<CanvasRenderer>().SetAlpha(alpha);
     }
 
     public void Flash(bool newSpecies)
@@ -101,6 +74,7 @@ public class PlantHUDScript : MonoBehaviour
         timeup = 0;
         timedown = downTime * 1.75f;
         float toAdd = (newSpecies) ? 0.2f : 0.05f;
-        slider.GetComponent<Slider>().value = Mathf.Min(1.0f, slider.GetComponent<Slider>().value + toAdd);
+        count++;
+        countText.text = count + "";
     }
 }
