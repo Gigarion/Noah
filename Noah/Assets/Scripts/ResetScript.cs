@@ -28,7 +28,7 @@ public class ResetScript : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene(0);	
 
-			//			Destroy(GameObject.Find("Dialogue Manager"));
+			Destroy(GameObject.Find("Dialogue Manager"));
 
 			Invoke("ToggleCursor", 0.25f);
 			//			ToggleCursor();
