@@ -3197,7 +3197,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "You: I think I just found B \u2013 I mean, Agent 374\u2026"
+        value: "You: I think I just found Bri\u2013 I mean, Agent 374\u2026"
         type: 0
         typeString: 
       - title: Parenthetical
@@ -3270,9 +3270,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: 'Command: Our condolences, agent. But please allow me to remind you
-          that according to the protocol, retrieving the wolf is our most important
-          task at hand. '
+        value: 'Command: Our condolences, agent. But allow me to remind you that retrieving
+          the wolf is the most important task at hand. '
         type: 0
         typeString: 
       - title: Parenthetical
@@ -3419,7 +3418,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "You: \u2026I will get back in a minute."
+        value: 'You: Yes, sir.'
         type: 0
         typeString: 
       - title: Parenthetical
@@ -3824,8 +3823,8 @@ MonoBehaviour:
         y: 482.45416
         width: 160
         height: 30
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.58499604
+    canvasScrollPosition: {x: 46.2488, y: 48.061638}
+    canvasZoom: 0.7649959
   - id: 9
     fields:
     - title: Title
